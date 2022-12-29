@@ -1,1 +1,1 @@
-# next.js-alura-cases
+# nextJs-alura-cases
