@@ -1,10 +1,20 @@
-import Link from "../src/components/Link"
+import FAQScreen from "../src/screens/FAQScreen"
 
-export default function FAQPage() {
-  return (
-    <div>
-      <h2>Alura Cases - Faça a sua pergunta</h2>
-      <Link href="/">Voltar para página Home</Link>
-    </div>
-  )
+export default FAQScreen;
+
+export async function getStaticProps() {
+  const FAQ_API_URL = 'https://gist.githubusercontent.com/omariosouto/0ceab54bdd8182cbd1a4549d32945c1a/raw/578ad1e8e5296fa048e3e7ff6b317f7497b31ad9/alura-cases-faq.json'
+  const faq = await fetch(FAQ_API_URL)
+    .then((respDoServidor) => {
+      return respDoServidor.json()
+    })
+    .then((resposta) => {
+      return (resposta)
+    })
+
+  return {
+    props: {
+      faq
+    }, 
+  }
 }
